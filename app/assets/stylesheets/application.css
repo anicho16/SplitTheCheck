@@ -26,3 +26,7 @@ nav {
     font-family: "Ink Free";
     font-size: 30px;
 }
+
+#search-area {
+    padding: 25px;
+}

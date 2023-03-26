@@ -3,7 +3,15 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants or /restaurants.json
   def index
-    @restaurants = Restaurant.all
+    if params[:name].present? && params[:location].present?
+      @restaurants = Restaurant.where('name LIKE ? AND location LIKE ?', "%#{params[:name]}%", "%#{params[:location]}%")
+    elsif params[:name].present?
+      @restaurants = Restaurant.where('name LIKE ?', "%#{params[:name]}%")
+    elsif params[:location].present?
+      @restaurants = Restaurant.where('location LIKE ?', "%#{params[:location]}%")
+    else
+      @restaurants = Restaurant.all
+    end
   end
 
   # GET /restaurants/1 or /restaurants/1.json
