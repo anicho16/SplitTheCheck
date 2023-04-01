@@ -16,6 +16,7 @@
 body {
     margin: 0 auto;
     font-family: "Century Gothic";
+    font-size: 18px;
 }
 nav {
     background-color: black;
@@ -49,24 +50,48 @@ nav {
 }
 
 .btn {
-    width: 9%;
     padding: 7px;
     background-color: #0F52BA;
-    border: none;
-    color: white;
     font-size: 18px;
     font-family: "Century Gothic";
+    border: none;
+    color: white;
     cursor: pointer;
 }
 
 .btn-new {
     width: 30%;
-    padding: 7px;
-    background-color: #0F52BA;
-    border: none;
-    color: white;
-    font-size: 18px;
     text-decoration: none;
+}
+
+.btn-search {
+    width: 9%;
+}
+
+.btn-primary {
+    appearance: auto;
+    user-select: none;
+    white-space: pre;
+    text-align: center;
+    cursor: default;
+    box-sizing: border-box;
+    background-color: buttonface;
+    color: buttontext;
+    padding: 5px 10px;
+    border-width: 2px;
+    border-style: outset;
+    border-image: initial;
+    margin: 15px 15px 15px 0;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: "Century Gothic";
+}
+
+.new-text {
+    width: 50%;
+    padding: 5px;
+    margin-bottom: 10px;
 }
 
 .search-text {
@@ -97,5 +122,9 @@ td, th {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#new-area {
+    margin-left: 30px;
 }
 

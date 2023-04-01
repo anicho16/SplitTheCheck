@@ -72,7 +72,11 @@ class RestaurantsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
-    def restaurant_params
-      params.require(:restaurant).permit(:name, :location, :willSplit, :wontSplit)
+  def restaurant_params
+    whitelisted = params.require(:restaurant).permit(:name, :location, :willSplit, :wontSplit)
+    whitelisted.tap do |whitelisted|
+      whitelisted[:willSplit] = whitelisted[:willSplit].presence || 1
+      whitelisted[:wontSplit] = whitelisted[:wontSplit].presence || 1
     end
+  end
 end
