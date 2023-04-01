@@ -30,3 +30,72 @@ nav {
 #search-area {
     padding: 25px;
 }
+
+.search-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.search-child {
+    width: 15%;
+    display: inline-block;
+    padding: 30px;
+    text-align: left;
+}
+
+.form-control {
+    padding: 5px;
+    width: 100%;
+}
+
+.btn {
+    width: 9%;
+    padding: 7px;
+    background-color: #0F52BA;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-family: "Century Gothic";
+    cursor: pointer;
+}
+
+.btn-new {
+    width: 30%;
+    padding: 7px;
+    background-color: #0F52BA;
+    border: none;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.search-text {
+    font-family: "Ink Free";
+    font-size: 30px;
+}
+
+.top-right {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 2px 25px;
+}
+
+#restaurants {
+    width: 75%;
+    margin: 0 auto;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

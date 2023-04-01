@@ -15,5 +15,8 @@
       <h1>Split the Check</h1>
     </nav>
     <%= yield %>
+    <div class="top-right">
+      <%= link_to "Add New Restaurant", new_restaurant_path, class: "btn-new" %>
+    </div>
   </body>
 </html>

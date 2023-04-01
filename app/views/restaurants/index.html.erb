@@ -1,37 +1,46 @@
-<div id= "search-area">
-<p style="color: green"><%= notice %></p>
+<div id="search-area">
+  <p style="color: green"><%= notice %></p>
 
+  <div class="search-container">
+    <%= form_tag restaurants_path, method: :get do %>
 
-<%= form_tag restaurants_path, method: :get do %>
-<div class="form-group">
-  <%= label_tag :name, "Name:" %>
-  <%= text_field_tag :name, params[:name], class: "form-control" %>
-</div>
-<div class="form-group">
-  <%= label_tag :location, "Location:" %>
-  <%= text_field_tag :location, params[:location], class: "form-control" %>
-</div>
-<%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
-
-<div id="restaurants">
-  <% if @restaurants.any? %>
-    <% @restaurants.each do |restaurant| %>
+      <div class="form-group search-child">
+        <p><%= label_tag :name, "Name:", class: "search-text" %></p>
+        <%= text_field_tag :name, params[:name], class: "form-control" %>
+      </div>
+      <div class="form-group search-child">
+        <p><%= label_tag :location, "Location:", class: "search-text" %></p>
+        <%= text_field_tag :location, params[:location], class: "form-control" %>
+      </div>
       <div>
-      <tr>
-        <td><%= restaurant.name %></td>
-        <td><%= restaurant.location %></td>
-        <td><%= link_to 'Show', restaurant %></td>
-        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
       </div>
     <% end %>
-  <% else %>
-    <p>No restaurants found.</p>
-  <% end %>
-</div>
+  </div>
 
-<%= link_to "New restaurant", new_restaurant_path %>
-
+  <div id="restaurants">
+    <div>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Will Split</th>
+          <th>Won't Split</th>
+        </tr>
+        <% if @restaurants.any? %>
+          <% @restaurants.each do |restaurant| %>
+            <tr>
+              <td><%= link_to restaurant.name, restaurant %></td>
+              <td><%= restaurant.location %></td>
+              <td><%= (restaurant.willSplit.to_f / (restaurant.willSplit + restaurant.wontSplit) * 100).round %>%</td>
+              <td><%= (restaurant.wontSplit.to_f / (restaurant.willSplit + restaurant.wontSplit) * 100).round %>%</td>
+              <!--<td> link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+            </tr>
+          <% end %>
+          </table>
+          </div>
+        <% else %>
+          <p>No restaurants found.</p>
+        <% end %>
+        </div>
 </div>
