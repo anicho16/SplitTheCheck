@@ -7,41 +7,31 @@ class RestaurantsTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit restaurants_url
-    assert_selector "h1", text: "Restaurants"
+    assert_selector "h1", text: "Split the Check"
   end
 
   test "should create restaurant" do
     visit restaurants_url
-    click_on "New restaurant"
+    click_on "Add New Restaurant"
 
     fill_in "Location", with: @restaurant.location
     fill_in "Name", with: @restaurant.name
-    fill_in "Willsplit", with: @restaurant.willSplit
-    fill_in "Wontsplit", with: @restaurant.wontSplit
     click_on "Create Restaurant"
 
     assert_text "Restaurant was successfully created"
-    click_on "Back"
+    click_on "Home"
   end
 
   test "should update Restaurant" do
     visit restaurant_url(@restaurant)
-    click_on "Edit this restaurant", match: :first
+    click_on "Edit Restaurant", match: :first
 
     fill_in "Location", with: @restaurant.location
     fill_in "Name", with: @restaurant.name
-    fill_in "Willsplit", with: @restaurant.willSplit
-    fill_in "Wontsplit", with: @restaurant.wontSplit
     click_on "Update Restaurant"
 
     assert_text "Restaurant was successfully updated"
-    click_on "Back"
+    click_on "Home"
   end
 
-  test "should destroy Restaurant" do
-    visit restaurant_url(@restaurant)
-    click_on "Destroy this restaurant", match: :first
-
-    assert_text "Restaurant was successfully destroyed"
-  end
 end
