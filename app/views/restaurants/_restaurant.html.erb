@@ -17,4 +17,11 @@
       <%= restaurant.wontSplit %>
     </div>
   </div>
+
+  <div>
+    <p>Cast Your Vote</p>
+  </div>
+
+  <%= button_to "Will Split", increment_will_split_restaurant_path(restaurant, restaurant_id: restaurant.id), method: :patch %>
+  <%= button_to "Won't Split", increment_wont_split_restaurant_path(restaurant, restaurant_id: restaurant.id), method: :patch %>
 </div>

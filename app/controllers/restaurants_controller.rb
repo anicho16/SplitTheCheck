@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: %i[ show edit update destroy ]
+  before_action :set_restaurant, only: %i[ show edit update destroy increment_will_split increment_wont_split]
 
   # GET /restaurants or /restaurants.json
   def index
@@ -65,6 +65,17 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  def increment_will_split
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant.increment_will_split
+    render :show, notice: 'Will Split was successfully incremented.'
+  end
+  def increment_wont_split
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant.increment_wont_split
+    render :show, notice: 'Wont Split was successfully incremented.'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
@@ -73,10 +84,7 @@ class RestaurantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
   def restaurant_params
-    whitelisted = params.require(:restaurant).permit(:name, :location, :willSplit, :wontSplit)
-    whitelisted.tap do |whitelisted|
-      whitelisted[:willSplit] = whitelisted[:willSplit].presence || 1
-      whitelisted[:wontSplit] = whitelisted[:wontSplit].presence || 1
-    end
+    params.fetch(:restaurant, {}).permit(:name, :location, :willSplit, :wontSplit, :restaurant_id)
   end
+
 end
