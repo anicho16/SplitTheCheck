@@ -34,14 +34,14 @@ nav {
 }
 
 .search-container {
-    padding: 20px;
+    padding: 0 20px;
     text-align: center;
 }
 
 .search-child {
     width: 20%;
     display: inline-block;
-    padding: 30px;
+    padding: 0 30px 20px;
     text-align: left;
 }
 
@@ -67,6 +67,7 @@ nav {
 
 .btn-search {
     width: 11%;
+    margin: 10px 0;
 }
 
 .btn-primary {
@@ -186,5 +187,10 @@ td, th {
 
 .large-text {
     font-size: 40px;
+}
+
+.pagination {
+    margin: 20px 0;
+    text-align: center;
 }
 

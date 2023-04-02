@@ -3,6 +3,7 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants or /restaurants.json
   def index
+    per_page = 10 # Number of records per page
     if params[:name].present? && params[:location].present?
       @restaurants = Restaurant.where('name LIKE ? AND location LIKE ?', "%#{params[:name]}%", "%#{params[:location]}%")
     elsif params[:name].present?
@@ -12,6 +13,12 @@ class RestaurantsController < ApplicationController
     else
       @restaurants = Restaurant.all
     end
+
+    page = (params[:page] || 1).to_i
+    @restaurants = @restaurants.offset((page - 1) * per_page).limit(per_page)
+
+    @prev_page = page - 1 if page > 1
+    @next_page = page + 1 if @restaurants.count == per_page
   end
 
   # GET /restaurants/1 or /restaurants/1.json

@@ -43,4 +43,14 @@
           <p>No restaurants found.</p>
         <% end %>
         </div>
+  <div class="pagination">
+    <% if @prev_page %>
+      <%= link_to "Previous", restaurants_path(page: @prev_page, name: params[:name], location: params[:location]) %>
+    <% end %>
+
+    <% if @next_page %>
+      <%= link_to "Next", restaurants_path(page: @next_page, name: params[:name], location: params[:location]) %>
+    <% end %>
+  </div>
+
 </div>
