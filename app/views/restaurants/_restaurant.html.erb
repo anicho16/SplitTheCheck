@@ -15,7 +15,7 @@
 
   <p class="large-text">Cast Your Vote</p>
 
-  <div class="inline">
+  <div class="btn-group">
     <%= button_to "Will Split", increment_will_split_restaurant_path(restaurant, restaurant_id: restaurant.id), method: :patch, class: "btn btn-will" %>
     <%= button_to "Won't Split", increment_wont_split_restaurant_path(restaurant, restaurant_id: restaurant.id), method: :patch, class: "btn btn-wont" %>
   </div>
