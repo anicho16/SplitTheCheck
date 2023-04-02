@@ -18,6 +18,7 @@ body {
     font-family: "Century Gothic";
     font-size: 18px;
 }
+
 nav {
     background-color: black;
     color: white;
@@ -126,5 +127,40 @@ td, th {
 
 .new-area {
     margin-left: 30px;
+}
+
+.show-nav {
+    text-align: right;
+    margin-right: 20px;
+}
+
+.show-nav a {
+    margin-right: 25px;
+}
+
+.show-restaurant {
+    padding: 20px;
+    background-color: #0F52BA;
+    font-size: 40px;
+    font-family: "Ink Free";
+    border: none;
+    color: white;
+    width: 60%;
+    text-align: center;
+}
+
+.show-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.split-info {
+    display: inline-block;
+    text-align: center;
+    padding: 20px;
+    font-size: 40px;
+    font-family: "Ink Free";
 }
 

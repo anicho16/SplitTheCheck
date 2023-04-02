@@ -1,6 +1,5 @@
-<div id="<%= dom_id restaurant %>">
-  <p>
-    <strong>Name:</strong>
+<div id="<%= dom_id restaurant %>" class = "show-content">
+  <p class="show-restaurant">
     <%= restaurant.name %>
   </p>
 
@@ -8,15 +7,14 @@
     <strong>Location:</strong>
     <%= restaurant.location %>
   </p>
-
-  <p>
-    <strong>Willsplit:</strong>
-    <%= restaurant.willSplit %>
-  </p>
-
-  <p>
-    <strong>Wontsplit:</strong>
-    <%= restaurant.wontSplit %>
-  </p>
-
+  <div>
+    <div class = "split-info">
+      <div>Will Split:</div>
+      <%= restaurant.willSplit %>
+    </div>
+    <div class="split-info">
+      <div >Won't Split:</div>
+      <%= restaurant.wontSplit %>
+    </div>
+  </div>
 </div>
