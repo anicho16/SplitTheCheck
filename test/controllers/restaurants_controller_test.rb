@@ -45,4 +45,25 @@ class RestaurantsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to restaurants_url
   end
+
+  test "should increment willSplit by 1" do
+    restaurant = restaurants(:one)
+    initial_will_split_count = restaurant.willSplit
+
+    patch increment_will_split_restaurant_path(restaurant, restaurant_id: restaurant.id)
+
+    restaurant.reload
+    assert_equal initial_will_split_count + 1, restaurant.willSplit
+  end
+
+  test "should increment wontSplit by 1" do
+    restaurant = restaurants(:one)
+    initial_wont_split_count = restaurant.wontSplit
+
+    patch increment_wont_split_restaurant_path(restaurant, restaurant_id: restaurant.id)
+
+    restaurant.reload
+    assert_equal initial_wont_split_count + 1, restaurant.wontSplit
+  end
+
 end
