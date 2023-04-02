@@ -1,27 +1,22 @@
-<div id="<%= dom_id restaurant %>" class = "show-content">
+<div id="<%= dom_id restaurant %>" class="show-content">
   <p class="show-restaurant">
     <%= restaurant.name %>
   </p>
-
-  <p>
-    <strong>Location:</strong>
-    <%= restaurant.location %>
-  </p>
   <div>
-    <div class = "split-info">
+    <div class="split-info green">
       <div>Will Split:</div>
       <%= restaurant.willSplit %>
     </div>
-    <div class="split-info">
-      <div >Won't Split:</div>
+    <div class="split-info red">
+      <div>Won't Split:</div>
       <%= restaurant.wontSplit %>
     </div>
   </div>
 
-  <div>
-    <p>Cast Your Vote</p>
-  </div>
+  <p class="large-text">Cast Your Vote</p>
 
-  <%= button_to "Will Split", increment_will_split_restaurant_path(restaurant, restaurant_id: restaurant.id), method: :patch %>
-  <%= button_to "Won't Split", increment_wont_split_restaurant_path(restaurant, restaurant_id: restaurant.id), method: :patch %>
+  <div class="inline">
+    <%= button_to "Will Split", increment_will_split_restaurant_path(restaurant, restaurant_id: restaurant.id), method: :patch, class: "btn btn-will" %>
+    <%= button_to "Won't Split", increment_wont_split_restaurant_path(restaurant, restaurant_id: restaurant.id), method: :patch, class: "btn btn-wont" %>
+  </div>
 </div>

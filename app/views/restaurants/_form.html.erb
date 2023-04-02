@@ -33,6 +33,10 @@
 -->
   <div>
     <%= form.submit class: "btn-primary" %>
-    <%= link_to "Cancel", restaurants_path, class: "btn-primary" %>
+    <% if restaurant.persisted? %>
+      <%= link_to "Cancel", restaurant_path(restaurant), class: "btn-primary" %>
+    <% else %>
+      <%= link_to "Cancel", restaurants_path, class: "btn-primary" %>
+    <% end %>
   </div>
 <% end %>

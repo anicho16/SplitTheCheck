@@ -89,6 +89,14 @@ nav {
     font-family: "Century Gothic";
 }
 
+.btn-will {
+    background-color: green;
+}
+
+.btn-wont {
+    background-color: red;
+}
+
 .new-text {
     width: 50%;
     padding: 5px;
@@ -162,5 +170,21 @@ td, th {
     padding: 20px;
     font-size: 40px;
     font-family: "Ink Free";
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.large-text {
+    font-size: 40px;
 }
 

@@ -68,12 +68,12 @@ class RestaurantsController < ApplicationController
   def increment_will_split
     @restaurant = Restaurant.find(params[:restaurant_id])
     @restaurant.increment_will_split
-    render :show, notice: 'Will Split was successfully incremented.'
+    redirect_to restaurant_path(@restaurant)
   end
   def increment_wont_split
     @restaurant = Restaurant.find(params[:restaurant_id])
     @restaurant.increment_wont_split
-    render :show, notice: 'Wont Split was successfully incremented.'
+    redirect_to restaurant_path(@restaurant)
   end
 
   private
