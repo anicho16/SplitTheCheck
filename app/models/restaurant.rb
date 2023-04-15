@@ -4,6 +4,8 @@ class Restaurant < ApplicationRecord
 
   before_save :set_defaults
 
+  has_many :votes
+
   def set_defaults
     self.willSplit ||= 1
     self.wontSplit ||= 1
