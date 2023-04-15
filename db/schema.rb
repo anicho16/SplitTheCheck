@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_25_150825) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_15_134728) do
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
     t.string "location"
     t.integer "willSplit"
     t.integer "wontSplit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

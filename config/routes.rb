@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   resources :restaurants do
     member do
       patch :increment_will_split
