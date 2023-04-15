@@ -3,6 +3,10 @@ require "application_system_test_case"
 class RestaurantsTest < ApplicationSystemTestCase
   setup do
     @restaurant = restaurants(:one)
+    visit login_url
+    fill_in "Email", with: "tester3@test.com"
+    fill_in "Password", with: "testpass"
+    click_on "Log in"
   end
 
   test "visiting the index" do
