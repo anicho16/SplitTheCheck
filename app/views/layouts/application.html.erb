@@ -18,7 +18,7 @@
     <div class="top-right">
       <%if !logged_in? %>
         <%= link_to "New User", new_user_path, class: "btn btn-new" %>
-        <%= link_to "Login", new_user_path, class: "btn btn-new" %>
+        <%= link_to "Login", login_path, class: "btn btn-new" %>
       <% else %>
         <%= link_to "Add New Restaurant", new_restaurant_path, class: "btn btn-new" %>
       <% end %>
