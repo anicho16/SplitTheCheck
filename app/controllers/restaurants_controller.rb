@@ -36,6 +36,7 @@ class RestaurantsController < ApplicationController
 
   # POST /restaurants or /restaurants.json
   def create
+    if(logged_in?)
     @restaurant = Restaurant.new(restaurant_params)
 
     respond_to do |format|
@@ -47,10 +48,14 @@ class RestaurantsController < ApplicationController
         format.json { render json: @restaurant.errors, status: :unprocessable_entity }
       end
     end
+    else
+      logged_in_user
+    end
   end
 
   # PATCH/PUT /restaurants/1 or /restaurants/1.json
   def update
+    if(logged_in?)
     respond_to do |format|
       if @restaurant.update(restaurant_params)
         format.html { redirect_to restaurant_url(@restaurant), notice: "Restaurant was successfully updated." }
@@ -60,26 +65,41 @@ class RestaurantsController < ApplicationController
         format.json { render json: @restaurant.errors, status: :unprocessable_entity }
       end
     end
+    else
+      logged_in_user
+    end
   end
 
   # DELETE /restaurants/1 or /restaurants/1.json
   def destroy
+    if(logged_in?)
     @restaurant.destroy
 
     respond_to do |format|
       format.html { redirect_to restaurants_url, notice: "Restaurant was successfully destroyed." }
       format.json { head :no_content }
     end
+    else
+      logged_in_user
+    end
   end
-
   def increment_will_split
     @restaurant = Restaurant.find(params[:restaurant_id])
     @restaurant.increment_will_split
+
+    # Create a new Vote record for the current user and the restaurant
+    Vote.create(user_id: current_user.id, restaurant_id: @restaurant.id)
+
     redirect_to restaurant_path(@restaurant)
   end
+
   def increment_wont_split
     @restaurant = Restaurant.find(params[:restaurant_id])
     @restaurant.increment_wont_split
+
+    # Create a new Vote record for the current user and the restaurant
+    Vote.create(user_id: current_user.id, restaurant_id: @restaurant.id)
+
     redirect_to restaurant_path(@restaurant)
   end
 

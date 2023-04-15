@@ -21,16 +21,23 @@ class VotesController < ApplicationController
 
   # POST /votes or /votes.json
   def create
-    @vote = Vote.new(vote_params)
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @user = current_user
 
-    respond_to do |format|
-      if @vote.save
-        format.html { redirect_to vote_url(@vote), notice: "Vote was successfully created." }
-        format.json { render :show, status: :created, location: @vote }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @vote.errors, status: :unprocessable_entity }
+    # Check if user has already voted for this restaurant
+    if @user.has_voted?(@restaurant)
+      flash[:notice] = "You have already voted for this restaurant."
+      redirect_to @restaurant
+    else
+      # Create a new vote for the user and update the restaurant's vote count
+      @vote = @user.votes.create(restaurant_id: @restaurant.id)
+      if params[:vote_type] == "willSplit"
+        @restaurant.increment_will_split
+      elsif params[:vote_type] == "wontSplit"
+        @restaurant.increment_wont_split
       end
+      flash[:success] = "Vote added successfully."
+      redirect_to @restaurant
     end
   end
 

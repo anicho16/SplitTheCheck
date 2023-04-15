@@ -13,11 +13,14 @@
     </div>
   </div>
   <%if logged_in? %>
-  <p class="large-text">Cast Your Vote</p>
-
-  <div class="btn-group">
-    <%= button_to "Will Split", increment_will_split_restaurant_path(restaurant, restaurant_id: restaurant.id), method: :patch, class: "btn btn-will" %>
-    <%= button_to "Won't Split", increment_wont_split_restaurant_path(restaurant, restaurant_id: restaurant.id), method: :patch, class: "btn btn-wont" %>
-  </div>
+    <% if current_user.has_voted?(restaurant) %>
+      <p>You have already voted for this restaurant. Thanks for your vote! </p>
+    <%else %>
+      <p class="large-text">Cast Your Vote</p>
+      <div class="btn-group">
+        <%= button_to "Will Split", increment_will_split_restaurant_path(restaurant, restaurant_id: restaurant.id), method: :patch, class: "btn btn-will", disabled: current_user.has_voted?(restaurant) %>
+        <%= button_to "Won't Split", increment_wont_split_restaurant_path(restaurant, restaurant_id: restaurant.id), method: :patch, class: "btn btn-wont", disabled: current_user.has_voted?(restaurant) %>
+      </div>
+    <% end %>
   <% end %>
 </div>
