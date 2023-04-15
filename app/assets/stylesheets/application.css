@@ -65,6 +65,10 @@ nav {
     text-decoration: none;
 }
 
+.btn-logout {
+    margin-top: 15px;
+}
+
 .btn-search {
     width: 11%;
     margin: 10px 0;
