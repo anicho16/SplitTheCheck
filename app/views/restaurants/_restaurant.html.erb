@@ -1,4 +1,13 @@
 <div id="<%= dom_id restaurant %>" class="show-content">
+  <% if logged_in? %>
+    <% if current_user %>
+      <% if @favorite_status %>
+        <%= button_to "Unfavorite", toggle_favorite_restaurant_path(restaurant), method: :patch %>
+      <% else %>
+        <%= button_to "Favorite", toggle_favorite_restaurant_path(restaurant), method: :patch %>
+      <% end %>
+    <% end %>
+  <% end %>
   <p class="show-restaurant">
     <%= restaurant.name %>
   </p>

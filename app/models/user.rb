@@ -7,8 +7,18 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
 
   has_many :votes
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_restaurants, through: :favorites, source: :restaurant
 
   def has_voted?(restaurant)
     votes.exists?(restaurant_id: restaurant.id)
+  end
+
+  def toggle_favorite_for(restaurant)
+    if favorite_restaurants.include?(restaurant)
+      favorites.find_by(restaurant_id: restaurant.id).destroy
+    else
+      favorites.create(restaurant: restaurant)
+    end
   end
 end

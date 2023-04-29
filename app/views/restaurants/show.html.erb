@@ -3,7 +3,9 @@
   <%= link_to "Home", restaurants_path %>
   <%if logged_in? %>
   <%= link_to "Edit Restaurant", edit_restaurant_path(@restaurant) %>
-  <% end %>
+    <%= render partial: 'restaurant', locals: { restaurant: @restaurant, favorite_status: favorite_status } %>
+
+<% end %>
   <!--
     %= button_to "Destroy this restaurant", @restaurant, method: :delete %>
     -->

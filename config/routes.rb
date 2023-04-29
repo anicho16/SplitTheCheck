@@ -15,4 +15,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+
+  patch 'restaurants/:id/toggle_favorite', to: 'restaurants#toggle_favorite', as: 'toggle_favorite_restaurant'
+
 end

@@ -23,6 +23,9 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1 or /restaurants/1.json
   def show
+    @restaurant = Restaurant.find(params[:id])
+    @favorite_status = current_user.favorite_restaurants.include?(@restaurant)
+    render :show, locals: { favorite_status: @favorite_status }
   end
 
   # GET /restaurants/new
@@ -101,6 +104,12 @@ class RestaurantsController < ApplicationController
     Vote.create(user_id: current_user.id, restaurant_id: @restaurant.id)
 
     redirect_to restaurant_path(@restaurant)
+  end
+
+  def toggle_favorite
+    @restaurant = Restaurant.find(params[:id])
+    current_user.toggle_favorite_for(@restaurant)
+    redirect_to @restaurant, favorite_status: current_user.favorites.include?(@restaurant)
   end
 
   private
