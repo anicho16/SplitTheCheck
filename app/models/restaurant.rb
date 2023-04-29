@@ -7,6 +7,7 @@ class Restaurant < ApplicationRecord
   has_many :votes
   has_many :favorites, dependent: :destroy
   has_many :favorited_by, through: :favorites, source: :user
+  has_many :comments
 
   def set_defaults
     self.willSplit ||= 1

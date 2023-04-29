@@ -115,6 +115,10 @@ nav {
     padding: 10px 15px;
 }
 
+.btn-submit {
+    text-decoration: none;
+}
+
 .btn-unfavorite, .btn-favorite {
     background-color: black;
 }
@@ -171,6 +175,28 @@ td, th {
 #favorite {
     float: left;
     width: 63%;
+}
+
+#add-comment {
+    margin-top: 20px;
+    width: 60%;
+    margin-left: 40px;
+}
+
+.comment-text-area {
+    width: 100%;
+}
+
+#comments {
+    width: 60%;
+}
+
+.comment {
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+    width: 100%;
 }
 
 .show-restaurant {

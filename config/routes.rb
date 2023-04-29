@@ -18,4 +18,7 @@ Rails.application.routes.draw do
 
   patch 'restaurants/:id/toggle_favorite', to: 'restaurants#toggle_favorite', as: 'toggle_favorite_restaurant'
 
+  resources :restaurants do
+    resources :comments, only: [:create]
+  end
 end

@@ -33,5 +33,25 @@
         <%= button_to "Won't Split", increment_wont_split_restaurant_path(restaurant, restaurant_id: restaurant.id), method: :patch, class: "btn btn-wont", disabled: current_user.has_voted?(restaurant) %>
       </div>
     <% end %>
+    <div id="add-comment">
+      <%= form_for([@restaurant, @restaurant.comments.build], url: restaurant_comments_path(@restaurant), method: :post) do |f| %>
+        <div class="field">
+          <%= f.label :content, "Add Comment" %><br>
+          <%= f.text_area :content, rows: 5, class: "comment-text-area" %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Submit", class: "btn btn-submit" %>
+          <%= link_to "Cancel", "#", class: "btn btn-submit" %>
+        </div>
+      <% end %>
+    </div>
+    <div id="comments">
+      <% @restaurant.comments.order(created_at: :desc).each do |comment| %>
+        <div class="comment">
+          <p> <%= comment.content %></p>
+          <p><%= comment.user.username %> on <%= comment.created_at.in_time_zone.strftime('%m-%d-%Y %I:%M %p') %></p>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
