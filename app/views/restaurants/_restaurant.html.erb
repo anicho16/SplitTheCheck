@@ -1,16 +1,18 @@
 <div id="<%= dom_id restaurant %>" class="show-content">
+  <div id="favorite">
   <% if logged_in? %>
     <% if current_user %>
       <% if @favorite_status %>
-        <%= button_to "Unfavorite", toggle_favorite_restaurant_path(restaurant), method: :patch %>
+        <%= button_to "Unfavorite", toggle_favorite_restaurant_path(restaurant), method: :patch, class: "btn btn-unfavorite" %>
       <% else %>
-        <%= button_to "Favorite", toggle_favorite_restaurant_path(restaurant), method: :patch %>
+        <%= button_to "Favorite ❤️", toggle_favorite_restaurant_path(restaurant), method: :patch, class: "btn btn-favorite" %>
       <% end %>
     <% end %>
   <% end %>
-  <p class="show-restaurant">
+  </div>
+  <div class="show-restaurant">
     <%= restaurant.name %>
-  </p>
+  </div>
   <div>
     <div class="split-info green">
       <div>Will Split:</div>

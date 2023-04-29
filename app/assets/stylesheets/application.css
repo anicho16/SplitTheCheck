@@ -115,6 +115,10 @@ nav {
     padding: 10px 15px;
 }
 
+.btn-unfavorite, .btn-favorite {
+    background-color: black;
+}
+
 .new-text {
     width: 50%;
     padding: 5px;
@@ -162,6 +166,11 @@ td, th {
 
 .show-nav a {
     margin-right: 25px;
+}
+
+#favorite {
+    float: left;
+    width: 63%;
 }
 
 .show-restaurant {
