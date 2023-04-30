@@ -1,6 +1,5 @@
 <p style="color: green"><%= notice %></p>
 <div class = "show-nav">
-  <%= link_to "Home", restaurants_path %>
   <%if logged_in? %>
   <%= link_to "Edit Restaurant", edit_restaurant_path(@restaurant) %>
 <% end %>

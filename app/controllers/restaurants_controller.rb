@@ -24,7 +24,11 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1 or /restaurants/1.json
   def show
     @restaurant = Restaurant.find(params[:id])
-    @favorite_status = current_user.favorite_restaurants.include?(@restaurant)
+    if logged_in?
+      @favorite_status = current_user.favorite_restaurants.include?(@restaurant)
+    else
+      @favorite_status = false
+    end
     render :show, locals: { favorite_status: @favorite_status }
   end
 
