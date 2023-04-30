@@ -19,7 +19,7 @@ class User < ApplicationRecord
     if favorite_restaurants.include?(restaurant)
       favorites.find_by(restaurant_id: restaurant.id).destroy
     else
-      favorites.create(restaurant: restaurant)
+      favorites.create(restaurant: restaurant, is_favorite: true)
     end
   end
 end

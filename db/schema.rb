@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_29_162718) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_29_182923) do
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.integer "user_id"
@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_29_162718) do
     t.integer "restaurant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_favorite"
     t.index ["restaurant_id"], name: "index_favorites_on_restaurant_id"
     t.index ["user_id", "restaurant_id"], name: "index_favorites_on_user_id_and_restaurant_id", unique: true
     t.index ["user_id"], name: "index_favorites_on_user_id"
@@ -51,6 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_29_162718) do
     t.integer "restaurant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "vote_type"
     t.index ["restaurant_id"], name: "index_votes_on_restaurant_id"
     t.index ["user_id"], name: "index_votes_on_user_id"
   end

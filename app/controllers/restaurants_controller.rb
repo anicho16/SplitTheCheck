@@ -91,7 +91,7 @@ class RestaurantsController < ApplicationController
     @restaurant.increment_will_split
 
     # Create a new Vote record for the current user and the restaurant
-    Vote.create(user_id: current_user.id, restaurant_id: @restaurant.id)
+    Vote.create(user_id: current_user.id, restaurant_id: @restaurant.id, vote_type: "Will Split")
 
     redirect_to restaurant_path(@restaurant)
   end
@@ -101,7 +101,7 @@ class RestaurantsController < ApplicationController
     @restaurant.increment_wont_split
 
     # Create a new Vote record for the current user and the restaurant
-    Vote.create(user_id: current_user.id, restaurant_id: @restaurant.id)
+    Vote.create(user_id: current_user.id, restaurant_id: @restaurant.id, vote_type: "Won't Split")
 
     redirect_to restaurant_path(@restaurant)
   end

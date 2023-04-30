@@ -30,7 +30,7 @@ class VotesController < ApplicationController
       redirect_to @restaurant
     else
       # Create a new vote for the user and update the restaurant's vote count
-      @vote = @user.votes.create(restaurant_id: @restaurant.id)
+      @vote = @user.votes.new(restaurant_id: @restaurant.id, vote_type: params[:vote_type])
       if params[:vote_type] == "willSplit"
         @restaurant.increment_will_split
       elsif params[:vote_type] == "wontSplit"
@@ -72,6 +72,6 @@ class VotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def vote_params
-      params.require(:vote).permit(:user_id, :restaurant_id)
+      params.require(:vote).permit(:user_id, :restaurant_id, :vote_type)
     end
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'summary/index'
   resources :votes
   resources :users
   resources :restaurants do
@@ -21,4 +22,6 @@ Rails.application.routes.draw do
   resources :restaurants do
     resources :comments, only: [:create]
   end
+
+  get '/summary', to: 'summary#index'
 end

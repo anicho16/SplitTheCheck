@@ -1,0 +1,65 @@
+<div id="summary">
+<h1>Profile Summary</h1>
+<% if @restaurants.any? %>
+  <table>
+    <thead>
+    <tr>
+      <th>Restaurants you said will split the check</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @willSplitVotes.each do |restaurant| %>
+      <tr>
+        <td><%= restaurant.name %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+    <tr>
+      <th>Restaurants you said won't split the check</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @wontSplitVotes.each do |restaurant| %>
+      <tr>
+        <td><%= restaurant.name %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+    <tr>
+      <th>Your favorite Restaurants</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @favorites.each do |restaurant| %>
+      <tr>
+        <td><%= restaurant.name %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <table>
+    <thead>
+    <tr>
+      <th>Restaurant</th>
+      <th>Comment</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @restaurants.each do |restaurant| %>
+      <tr>
+        <td><%= restaurant.name %></td>
+        <td><%= restaurant.content %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No restaurants found</p>
+<% end %>
+</div>
